@@ -6,12 +6,12 @@ const products = [
     mrp: 599, 
     rating: "4.6 ★", 
     category: "Perfumes",
-    description: `Premium Denver Perfume Pack of 3 — perfect for men & women.
+    description: `Premium Denver Perfume Pack of 3 — perfect for men.
 Long-lasting fragrance, ideal for daily use or gifting 🎁
 
 <strong>✅ Key Features:</strong>
 - 3 Bottles × 50ml each (Total 150ml)
-- Unisex fragrance (Men & Women)
+- perfect for men
 - Made in India 🇮🇳
 
 <strong>🧾 Product Details:</strong>
@@ -21,7 +21,7 @@ Long-lasting fragrance, ideal for daily use or gifting 🎁
   },
   {
     id: 2,
-    name: "Trendy LED Digital Watch – Unisex (1 Pc)",
+    name: "Trendy LED Digital Watch – Unisex (2 Pc)",
     price: 219,
     mrp: 499,
     rating: "4.4 ★",
@@ -31,14 +31,14 @@ Trendy design with glowing LED display – perfect for daily use or gifting! �
 
 <strong>✅ Key Features:</strong>
 - Bright LED Digital Display
-- Soft & Durable Rubber Strap (Orange 🟧)
+- Soft & Durable Rubber Strap 
 - Made in India 🇮🇳
 
 <strong>📏 Dimensions:</strong>
 - Width: 4 cm, Height: 2 cm, Length: 20 cm
 
 <strong>📦 Packaging:</strong>
-- Premium box packed (1 Watch)
+- Premium box packed (2 Watch)
 
 <strong>🧾 Product Details:</strong>
 - Type: LED Digital Watch
@@ -61,7 +61,6 @@ const customerForm = document.getElementById('customer-form');
 let currentImageIndex = 0;
 let activeProduct = null;
 
-// --- Function to render products ---
 function renderProducts(productsToRender) {
     productContainer.innerHTML = '';
     if (productsToRender.length === 0) {
@@ -72,8 +71,6 @@ function renderProducts(productsToRender) {
         const card = document.createElement('div');
         card.className = 'product-card';
         card.dataset.productId = product.id; 
-        
-        // ✅ --- UPDATED CARD HTML --- ✅
         card.innerHTML = `
             <img src="${product.images[0]}" alt="${product.name}" class="product-image">
             <div class="card-body">
@@ -85,7 +82,6 @@ function renderProducts(productsToRender) {
     });
 }
 
-// --- Function to render category buttons ---
 function renderCategories() {
     categories.forEach(category => {
         const button = document.createElement('button');
@@ -97,7 +93,6 @@ function renderCategories() {
     });
 }
 
-// --- Main filtering logic ---
 function filterAndRender() {
     const activeCategoryBtn = categoryBar.querySelector('.active');
     const currentCategory = activeCategoryBtn.dataset.category;
@@ -114,7 +109,6 @@ function filterAndRender() {
     renderProducts(filteredProducts);
 }
 
-// --- Event Listeners for Filtering ---
 categoryBar.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
         categoryBar.querySelector('.active').classList.remove('active');
@@ -125,7 +119,6 @@ categoryBar.addEventListener('click', (event) => {
 });
 searchInput.addEventListener('input', filterAndRender);
 
-// --- Modal Functions ---
 function updateSlider() {
     if (!activeProduct) return;
     const mainImage = modalBody.querySelector('#main-product-image');
@@ -166,7 +159,6 @@ function hideProductModal() { productModal.classList.add('hidden'); }
 function showCustomerFormModal() { customerFormModal.classList.remove('hidden'); }
 function hideCustomerFormModal() { customerFormModal.classList.add('hidden'); }
 
-// --- Event Listeners for Modals ---
 productContainer.addEventListener('click', (event) => {
   const card = event.target.closest('.product-card');
   if (card) {
@@ -200,15 +192,10 @@ customerFormModal.addEventListener('click', (event) => {
   if (event.target.classList.contains('close-btn') || event.target === customerFormModal) { hideCustomerFormModal(); }
 });
 
-// --- Initial Setup ---
 document.addEventListener('DOMContentLoaded', () => {
     renderCategories();
     renderProducts(products);
 });
-
-// Is code ko apni script.js file ke bilkul aakhir mein daal dein
-
-// Add this entire block to the end of your script.js file
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

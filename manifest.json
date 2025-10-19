@@ -1,13 +1,20 @@
 {
-  "name": "ShoppingMarts99",
+  "name": "ShoppingMarts99 - Modern Storefront",
+  "short_name": "SM99",
+  "description": "A modern e-commerce storefront with WhatsApp ordering.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#f7fafc",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "Images/icon-192x192.png",
+      "src": "/Images/icons/icon-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "Images/icon-512x512.png",
+      "src": "/Images/icons/icon-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     }

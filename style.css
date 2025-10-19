@@ -1,0 +1,118 @@
+/* --- NEW STYLISH THEME --- */
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --text-dark: #1a202c;
+  --text-light: #4a5568;
+  --background-light: #f7fafc;
+  --card-background: #ffffff;
+  --border-light: #e2e8f0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.container { max-width: 1200px; margin: auto; padding: 0 20px; }
+
+/* --- HEADER --- */
+.main-header {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 15px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.main-header .container { display: flex; align-items: center; justify-content: space-between; }
+.logo { font-size: 2rem; font-weight: 800; }
+.search-bar { flex-grow: 1; margin: 0 30px; background-color: rgba(255, 255, 255, 0.2); border-radius: 50px; display: flex; align-items: center; padding: 8px 20px; transition: background-color 0.3s; }
+.search-bar:focus-within { background-color: rgba(255, 255, 255, 0.3); }
+.search-bar i { margin-right: 10px; }
+.search-bar input { background: none; border: none; outline: none; width: 100%; font-size: 1rem; color: white; font-family: 'Poppins', sans-serif; }
+.search-bar input::placeholder { color: rgba(255, 255, 255, 0.8); }
+.user-actions { display: flex; align-items: center; gap: 20px; }
+.action-item i { font-size: 1.4rem; cursor: pointer; }
+
+/* --- TEXT ANIMATION --- */
+.animated-text {
+  background: linear-gradient(90deg, #ff8a00, #e52e71, #667eea, #ff8a00);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: text-animation 10s linear infinite;
+}
+@keyframes text-animation {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* --- CATEGORY BAR --- */
+.category-nav { background-color: var(--card-background); padding: 15px 0; border-bottom: 1px solid var(--border-light); }
+.category-nav .container { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+.category-btn { background: none; border: 1px solid var(--border-light); border-radius: 20px; padding: 8px 20px; font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+.category-btn:hover { background-color: #f0f2f5; }
+.category-btn.active { background: var(--primary-gradient); color: white; border-color: transparent; }
+
+/* --- MAIN CONTENT & PRODUCT GRID --- */
+main { padding: 40px 0; }
+main h2 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 40px; }
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+.product-card { background-color: var(--card-background); border: 1px solid var(--border-light); border-radius: 12px; overflow: hidden; text-align: left; cursor: pointer; transition: box-shadow 0.3s ease, transform 0.3s ease; display: flex; flex-direction: column; }
+.product-card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.1); transform: translateY(-5px); }
+.product-card .product-image { width: 100%; height: 250px; object-fit: contain; }
+.product-card .card-body { padding: 15px 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.product-card .product-title { font-size: 1.1rem; margin: 0 0 8px 0; color: var(--text-dark); font-weight: 600; flex-grow: 1; }
+.product-card .product-price { font-size: 1.3rem; font-weight: 700; color: var(--text-dark); margin: 0; }
+
+/* --- MODAL STYLES --- */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1001; backdrop-filter: blur(5px); }
+.modal-content { background-color: var(--card-background); padding: 30px; border-radius: 12px; max-width: 650px; width: 90%; position: relative; max-height: 90vh; overflow-y: auto; }
+.close-btn { position: absolute; top: 15px; right: 25px; font-size: 35px; cursor: pointer; color: #aaa; z-index: 10; }
+.hidden { display: none; }
+.thumbnail-container { display: flex; gap: 10px; justify-content: flex-start; margin-bottom: 25px; overflow-x: auto; padding-bottom: 10px; /* Space for scrollbar */ }
+.thumbnail { width: 70px; height: 70px; object-fit: contain; border: 2px solid var(--border-light); border-radius: 8px; cursor: pointer; flex-shrink: 0; transition: border-color 0.2s ease; }
+.thumbnail.active { border-color: #667eea; }
+.product-info .price-container { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+.product-info .final-price { font-size: 1.8rem; font-weight: 700; }
+.product-info .mrp { font-size: 1rem; color: var(--text-light); text-decoration: line-through; }
+.product-info .discount { font-size: 1rem; color: #28a745; font-weight: 600; }
+.product-info .description { font-size: 1rem; color: #444; margin-bottom: 30px; line-height: 1.6; white-space: pre-wrap; }
+.buy-btn, .order-now-btn { background: var(--primary-gradient); color: white; border: none; padding: 15px; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; width: 100%; text-align: center; }
+
+/* --- CUSTOMER FORM --- */
+.form-modal-content { background-color: var(--card-background); padding: 30px; border-radius: 12px; max-width: 450px; width: 90%; position: relative; }
+#customer-form label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
+#customer-form input, #customer-form textarea { width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 8px; box-sizing: border-box; font-size: 1rem; font-family: 'Poppins', sans-serif; }
+#customer-form input:focus, #customer-form textarea:focus { border-color: #667eea; box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2); outline: none; }
+
+/* --- FOOTER --- */
+.main-footer { background-color: #1a202c; color: #a0aec0; text-align: center; padding: 25px; }
+.made-by { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
+
+
+/* ✅ --- NEW RESPONSIVE STYLES FOR PHONE --- ✅ */
+@media (max-width: 768px) {
+    .container { padding: 0 15px; }
+    
+    .main-header .container { flex-wrap: wrap; }
+    .logo { width: 100%; text-align: center; margin-bottom: 10px; }
+    .search-bar { order: 2; width: calc(100% - 120px); margin: 0 auto 0 0; }
+    .user-actions { order: 3; }
+    
+    .category-nav .container { justify-content: flex-start; overflow-x: auto; padding-bottom: 10px; }
+    .category-btn { flex-shrink: 0; } /* Prevents buttons from shrinking */
+
+    main { padding: 20px 0; }
+    main h2 { font-size: 1.5rem; }
+    .product-grid { gap: 15px; }
+    
+    .modal-content { padding: 20px; width: 95%; max-height: 85vh; }
+    .close-btn { top: 10px; right: 15px; font-size: 30px; }
+    .product-info .final-price { font-size: 1.5rem; }
+    .product-info .product-title { font-size: 1.2rem; }
+    .buy-btn, .order-now-btn { padding: 12px; }
+}

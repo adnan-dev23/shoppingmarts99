@@ -1,38 +1,47 @@
 # 🛍️ ShoppingMarts99 - Modern E-Commerce Storefront
 
-A stylish and fully responsive e-commerce catalog website built with pure HTML, CSS, and JavaScript. This project simulates a real-world shopping experience, allowing users to browse, search, and filter products, and place orders directly via WhatsApp.
+A stylish and fully responsive e-commerce catalog website built with pure HTML, CSS, and JavaScript. This project simulates a real-world shopping experience with advanced features.
 
-**Live Demo:** [Add your Netlify link here after deploying]
+**Live Demo:** [Add your Netlify link here]
 
-![ShoppingMarts99 Screenshot](screenshot.png)
+![ShoppingMarts99 Screenshot](screenshot.png) 
 
 ---
 
 ## ✨ Features
 
-* **Modern & Stylish UI:** A unique design with an animated gradient text effect.
-* **Working Search Bar:** Instantly filter products by typing in the search bar.
-* **Category Filtering:** Filter products by clicking on category buttons.
-* **Detailed Product Popup:** A modal with an interactive image gallery and full product details.
-* **WhatsApp Ordering:** A customer form generates a pre-filled WhatsApp message with all order details.
-* **Fully Responsive:** Looks great on both desktop and mobile.
-* **PWA Ready:** Includes a service worker for offline capabilities.
+* **Modern & Stylish UI:** Unique design with animated gradient text.
+* **Hero Banner:** Attractive banner below the header.
+* **Working Search Bar:** Instantly filter products.
+* **Category Filtering:** Filter products by category.
+* **Product Sorting:** Sort products by price (Low to High, High to Low).
+* **Skeleton Loading:** Placeholder cards shown while products load.
+* **Scroll Animations:** Products animate smoothly as you scroll.
+* **Product Tags:** Highlight new products with a "NEW" tag.
+* **Detailed Product Popup:** Modal with interactive image gallery and full details.
+* **Browser History Integration:** Modal opening/closing works with the browser's back button.
+* **WhatsApp Ordering:** Customer form generates a pre-filled WhatsApp order message.
+* **Enhanced Footer:** Includes useful links.
+* **Back to Top Button:** Easily navigate back to the top of the page.
+* **Fully Responsive:** Looks great on desktop and mobile.
+* **PWA Ready:** Includes manifest and service worker for offline use and installability.
 
 ---
 
 ## 🛠️ Tech Stack
 
 * **HTML5**
-* **CSS3** (Flexbox & Grid)
-* **JavaScript (ES6+)**
+* **CSS3** (Flexbox, Grid, Animations)
+* **JavaScript (ES6+)** (DOM Manipulation, Event Handling, Filtering, Sorting)
+* **Font Awesome** (Icons)
 
 ---
 
 ## 🚀 How to Run
 
-1.  Download the project files.
-2.  Ensure your `Images` folder is set up correctly.
-3.  Open the `index.html` file in your browser. No special server is needed for this final version.
+1.  Download or clone the repository.
+2.  Ensure your `Images` folder structure matches the paths in `script.js`.
+3.  Open `index.html` in your browser. (No special server needed for this version).
 
 ---
 

@@ -6,6 +6,7 @@ const products = [
     mrp: 599, 
     rating: "4.6 ★", 
     category: "Perfumes",
+    isNew: true, // Tag for 'NEW'
     description: `Premium Denver Perfume Pack of 3 — perfect for men.
 Long-lasting fragrance, ideal for daily use or gifting 🎁
 
@@ -26,6 +27,7 @@ Long-lasting fragrance, ideal for daily use or gifting 🎁
     mrp: 499,
     rating: "4.4 ★",
     category: "Watches",
+    isNew: false,
     description: `Upgrade your style with this modern LED Digital Watch.
 Trendy design with glowing LED display – perfect for daily use or gifting! 🎁
 
@@ -57,21 +59,59 @@ const productModal = document.getElementById('product-modal');
 const modalBody = document.getElementById('modal-body');
 const customerFormModal = document.getElementById('customer-form-modal');
 const customerForm = document.getElementById('customer-form');
+const sortSelect = document.getElementById('sort-select');
+const backToTopButton = document.getElementById('back-to-top');
 
 let currentImageIndex = 0;
 let activeProduct = null;
 
+// --- LIKE BUTTON LOGIC ---
+let likedProductIds = new Set(JSON.parse(localStorage.getItem('likedProducts') || '[]'));
+function saveLikes() { localStorage.setItem('likedProducts', JSON.stringify(Array.from(likedProductIds))); }
+function handleLikeClick(productId, buttonElement) {
+    productId = parseInt(productId); 
+    if (likedProductIds.has(productId)) {
+        likedProductIds.delete(productId);
+        buttonElement.classList.remove('liked');
+        buttonElement.innerHTML = '<i class="far fa-heart"></i>'; 
+    } else {
+        likedProductIds.add(productId);
+        buttonElement.classList.add('liked');
+        buttonElement.innerHTML = '<i class="fas fa-heart"></i>'; 
+    }
+    saveLikes();
+}
+// --- END LIKE LOGIC ---
+
+// --- Skeleton Loader HTML ---
+const skeletonCardHTML = `
+<div class="skeleton-card">
+    <div class="skeleton-image"></div>
+    <div class="skeleton-text"></div>
+    <div class="skeleton-text short"></div>
+</div>`;
+
+// --- Function to render products ---
 function renderProducts(productsToRender) {
-    productContainer.innerHTML = '';
+    productContainer.classList.remove('loading'); 
+    productContainer.innerHTML = ''; 
     if (productsToRender.length === 0) {
         productContainer.innerHTML = '<p style="text-align: center; width: 100%; color: #888;">No products found!</p>';
         return;
     }
-    productsToRender.forEach(product => {
+    productsToRender.forEach((product, index) => {
         const card = document.createElement('div');
-        card.className = 'product-card';
+        card.className = 'product-card'; 
         card.dataset.productId = product.id; 
+        card.style.animationDelay = `${index * 0.05}s`; 
+        
+        const isLiked = likedProductIds.has(product.id);
+        
         card.innerHTML = `
+            ${product.isNew ? '<span class="product-tag">NEW</span>' : ''} 
+            <button class="like-button ${isLiked ? 'liked' : ''}" data-product-id="${product.id}" title="Like">
+                <i class="${isLiked ? 'fas' : 'far'} fa-heart"></i>
+            </button>
             <img src="${product.images[0]}" alt="${product.name}" class="product-image">
             <div class="card-body">
                 <h3 class="product-title">${product.name}</h3>
@@ -79,9 +119,11 @@ function renderProducts(productsToRender) {
             </div>
         `;
         productContainer.appendChild(card);
+        observer.observe(card); 
     });
 }
 
+// --- Function to render category buttons ---
 function renderCategories() {
     categories.forEach(category => {
         const button = document.createElement('button');
@@ -93,32 +135,68 @@ function renderCategories() {
     });
 }
 
-function filterAndRender() {
+// --- Sorting Logic ---
+function sortProducts(productsToSort, sortBy) {
+    const sorted = [...productsToSort]; 
+    switch (sortBy) {
+        case 'price-low-high': sorted.sort((a, b) => a.price - b.price); break;
+        case 'price-high-low': sorted.sort((a, b) => b.price - a.price); break;
+        default: sorted.sort((a, b) => a.id - b.id); break;
+    }
+    return sorted;
+}
+
+// --- Main filtering and sorting logic ---
+function filterSortAndRender() {
     const activeCategoryBtn = categoryBar.querySelector('.active');
     const currentCategory = activeCategoryBtn.dataset.category;
     const searchTerm = searchInput.value.toLowerCase();
+    const sortBy = sortSelect.value;
     let filteredProducts = products;
     if (currentCategory !== "All") {
         filteredProducts = products.filter(product => product.category === currentCategory);
     }
     if (searchTerm) {
-        filteredProducts = filteredProducts.filter(product => 
-            product.name.toLowerCase().includes(searchTerm)
-        );
+        filteredProducts = filteredProducts.filter(product => product.name.toLowerCase().includes(searchTerm));
     }
-    renderProducts(filteredProducts);
+    const sortedProducts = sortProducts(filteredProducts, sortBy);
+    renderProducts(sortedProducts);
 }
 
+// --- Event Listeners for Filtering & Sorting ---
 categoryBar.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
         categoryBar.querySelector('.active').classList.remove('active');
         event.target.classList.add('active');
         pageTitle.textContent = (event.target.dataset.category === "All") ? "All Products" : event.target.dataset.category;
-        filterAndRender();
+        filterSortAndRender();
     }
 });
-searchInput.addEventListener('input', filterAndRender);
+searchInput.addEventListener('input', filterSortAndRender);
+sortSelect.addEventListener('change', filterSortAndRender); 
 
+// --- Intersection Observer for Scroll Animations ---
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 }); 
+
+// --- Back to Top Button Logic ---
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) { 
+        backToTopButton.classList.remove('hidden');
+    } else {
+        backToTopButton.classList.add('hidden');
+    }
+});
+backToTopButton.addEventListener('click', () => {
+    window.scrollTo(0, 0); 
+});
+
+// --- Modal Functions ---
 function updateSlider() {
     if (!activeProduct) return;
     const mainImage = modalBody.querySelector('#main-product-image');
@@ -153,13 +231,31 @@ function showProductModal(product) {
   `;
   productModal.classList.remove('hidden');
   updateSlider();
+  history.pushState({ productId: product.id }, '', `#product-${product.id}`);
 }
 
-function hideProductModal() { productModal.classList.add('hidden'); }
+function hideProductModal() { 
+    productModal.classList.add('hidden'); 
+    activeProduct = null;
+    if(window.location.hash.startsWith('#product-')) {
+       history.back(); 
+    }
+}
+
 function showCustomerFormModal() { customerFormModal.classList.remove('hidden'); }
 function hideCustomerFormModal() { customerFormModal.classList.add('hidden'); }
 
+// --- Event Listeners for Modals ---
 productContainer.addEventListener('click', (event) => {
+  // Check if like button was clicked
+  if (event.target.closest('.like-button')) {
+      const button = event.target.closest('.like-button');
+      handleLikeClick(button.dataset.productId, button);
+      event.stopPropagation(); // Prevent modal from opening
+      return; 
+  }
+  
+  // Otherwise, open modal
   const card = event.target.closest('.product-card');
   if (card) {
     const productId = parseInt(card.dataset.productId);
@@ -170,7 +266,7 @@ productContainer.addEventListener('click', (event) => {
 
 productModal.addEventListener('click', (event) => {
   if (!activeProduct) return;
-  if (event.target.classList.contains('buy-btn')) { hideProductModal(); showCustomerFormModal(); return; }
+  if (event.target.classList.contains('buy-btn')) { /* Keep history */ showCustomerFormModal(); return; } 
   if (event.target.classList.contains('thumbnail')) { currentImageIndex = parseInt(event.target.dataset.index); updateSlider(); }
   if (event.target.classList.contains('close-btn') || event.target === productModal) { hideProductModal(); }
 });
@@ -186,25 +282,42 @@ customerForm.addEventListener('submit', (event) => {
     window.open(`https://wa.me/${your_whatsapp_number}?text=${encodeURIComponent(message.trim())}`, '_blank');
     customerForm.reset();
     hideCustomerFormModal();
+    hideProductModal(); // Hide product modal after order
 });
 
 customerFormModal.addEventListener('click', (event) => {
   if (event.target.classList.contains('close-btn') || event.target === customerFormModal) { hideCustomerFormModal(); }
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    renderCategories();
-    renderProducts(products);
+window.addEventListener('popstate', () => {
+    if (!window.location.hash.startsWith('#product-')) {
+        productModal.classList.add('hidden'); 
+        activeProduct = null;
+    }
 });
 
+// --- Initial Setup ---
+document.addEventListener('DOMContentLoaded', () => {
+    renderCategories();
+    productContainer.innerHTML = skeletonCardHTML.repeat(6); 
+    setTimeout(() => {
+        filterSortAndRender(); 
+    }, 500); 
+
+    if(window.location.hash.startsWith('#product-')) {
+        const productId = parseInt(window.location.hash.substring(9));
+        const product = products.find(p => p.id === productId);
+        if (product) {
+            showProductModal(product); 
+        }
+    }
+});
+
+// --- Service Worker Registration ---
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
-      .then(registration => {
-        console.log('✅ Service Worker registered successfully!');
-      })
-      .catch(error => {
-        console.log('❌ Service Worker registration failed:', error);
-      });
+      .then(registration => { console.log('✅ Service Worker registered!'); })
+      .catch(error => { console.log('❌ Service Worker registration failed:', error); });
   });
 }

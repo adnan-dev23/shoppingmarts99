@@ -1,14 +1,15 @@
-/* --- STYLISH THEME WITH ALL FEATURES --- */
+/* --- DARKER STYLISH THEME V2 --- */
 
 :root {
   --primary-gradient: linear-gradient(135deg, #5a67d8 0%, #5a3f89 100%);
-  --text-dark: #1A202C;
+  --text-dark: #1A202C; /* Dark color for button */
   --text-light: #4A5568;
   --background-light: #f0f4f8;
   --card-background: #ffffff;
   --border-light: #d8dee9;
   --like-color: #e53935;
   --active-color-highlight: #5a3f89;
+  --button-purple-hover: #4c3375; /* Darker purple for hover */
 }
 
 html { scroll-behavior: smooth; }
@@ -123,55 +124,90 @@ main h2 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 
 .footer-links a:hover { color: white; }
 .made-by { font-size: 1.5rem; font-weight: 700; margin-bottom: 10px; }
 
-/* --- BACK TO TOP BUTTON --- */
-#back-to-top { position: fixed; bottom: 30px; right: 30px; background: var(--primary-gradient); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transition: opacity 0.3s ease, transform 0.3s ease; opacity: 0; transform: translateY(10px); z-index: 100; }
-#back-to-top:not(.hidden) { opacity: 1; transform: translateY(0); }
-#back-to-top:hover { opacity: 0.9; }
+/* ✅ --- UPDATED BACK TO TOP BUTTON --- ✅ */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--text-dark); /* Solid dark color */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    /* Transition for visibility and hover effect */
+    transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease; 
+    opacity: 0; /* Hidden by default */
+    transform: scale(0.8); /* Start smaller */
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#back-to-top:not(.hidden) {
+    opacity: 1; /* Fade in when visible */
+    transform: scale(1); /* Scale up to normal size */
+}
+#back-to-top:hover {
+    background-color: #4A5568; /* Slightly lighter dark on hover */
+    transform: scale(1.05); /* Slightly bigger on hover */
+}
+/* --- END BACK TO TOP --- */
 
 /* --- RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
     .container { padding: 0 10px; }
     .main-header .container { flex-wrap: wrap; }
     .logo { width: 100%; text-align: center; margin-bottom: 10px; font-size: 1.8rem; }
-    .search-bar { order: 2; width: calc(100% - 80px); /* Slightly more space */ margin: 0; padding: 6px 15px;}
+    .search-bar { order: 2; width: calc(100% - 80px); margin: 0; padding: 6px 15px;}
     .user-actions { order: 3; gap: 15px; }
     .action-item i { font-size: 1.2rem; }
-
+    
     .controls-nav { top: 0; padding: 10px 0;}
     .category-nav .container { padding: 0 10px; justify-content: flex-start; overflow-x: auto; }
     .category-btn { padding: 6px 14px; font-size: 0.8rem; flex-shrink: 0; }
     .sort-options { margin-top: 10px; width: 100%; text-align: center; }
-
+    
     main { padding: 20px 0; }
     main h2 { font-size: 1.4rem; margin-bottom: 25px; }
 
-    /* ✅ --- SMALLER 2x2 GRID & CARDS FOR MOBILE --- ✅ */
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
+    /* ✅ --- EVEN SMALLER 2x2 GRID & CARDS FOR MOBILE --- ✅ */
+    .product-grid { 
+        grid-template-columns: repeat(2, 1fr); 
         gap: 8px; /* Further reduced gap */
     }
-    .product-card .product-image {
-        height: 150px; /* Reduced image height further */
+    .product-card .product-image { 
+        height: 145px; /* Reduced image height further */
     }
-    .product-card .card-body {
+    .product-card .card-body { 
         padding: 8px 10px; /* Reduced padding */
     }
-    .product-card .product-title {
-        font-size: 0.8rem; /* Smaller title */
+    .product-card .product-title { 
+        font-size: 0.75rem; /* Smaller title */
         padding-right: 25px;
         margin-bottom: 4px; /* Reduced margin */
+         /* Allow title to wrap if needed */
+        white-space: normal; 
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2; /* Limit to 2 lines */
+        -webkit-box-orient: vertical; 
+        min-height: 2.4em; /* Approx height for 2 lines */
     }
-    .product-card .product-price {
-        font-size: 0.95rem; /* Smaller price */
+    .product-card .product-price { 
+        font-size: 0.9rem; /* Smaller price */
     }
-    .like-button {
+    .like-button { 
         font-size: 1rem; /* Smaller heart */
-        top: 6px;
-        right: 6px;
+        top: 6px; 
+        right: 6px; 
         padding: 3px;
     }
     /* --- END MOBILE CARD ADJUSTMENTS --- */
-
+    
     .modal-content { padding: 15px; width: 95%; max-height: 90vh; }
     .close-btn { top: 8px; right: 12px; font-size: 28px; }
     .buy-btn, .order-now-btn { padding: 12px; font-size: 1rem; }
@@ -180,9 +216,8 @@ main h2 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 
     .form-modal-content { padding: 25px; }
 }
 
-/* Optional: Even smaller adjustments for very small screens */
 @media (max-width: 400px) {
     .product-card .product-image { height: 130px; }
-    .product-card .product-title { font-size: 0.75rem; }
-    .product-card .product-price { font-size: 0.9rem; }
+    .product-card .product-title { font-size: 0.7rem; min-height: 2.1em; }
+    .product-card .product-price { font-size: 0.85rem; }
 }

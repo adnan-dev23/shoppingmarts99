@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shoppingmarts99-v10'; // Version updated for latest image paths
+const CACHE_NAME = 'shoppingmarts99-v11'; // Version updated
 const urlsToCache = [
   '/',
   '/index.html',
@@ -7,7 +7,7 @@ const urlsToCache = [
   // Perfume Images
   '/Images/perfumes/denver/1.jpg', '/Images/perfumes/denver/2.jpg', '/Images/perfumes/denver/3.jpg', '/Images/perfumes/denver/4.jpg',
   // LED Watch Images
-  '/Images/watches/led watch/1.jpg', '/Images/watches/led watch/2.jpg', '/Images/watches/led watch/3.jpg',
+  '/Images/watches/led watch/1.jpg', '/Images/watches/led watch/2.jpg', '/Images/watches/led watch/3.jpg', '/Images/watches/led watch/4.jpg',
   // Voguish Watch Images
   '/Images/watches/Voguish Men Waches/1.jpg', '/Images/watches/Voguish Men Waches/2.jpg',
   // Backpack Images (All Colors)

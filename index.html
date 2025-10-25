@@ -62,20 +62,56 @@
                 <div class="skeleton-card"><div class="skeleton-image"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
                 <div class="skeleton-card"><div class="skeleton-image"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
                 <div class="skeleton-card"><div class="skeleton-image"></div><div class="skeleton-text"></div><div class="skeleton-text short"></div></div>
-            </div>
+                </div>
         </div>
     </main>
 
     <footer class="main-footer">
         <div class="container footer-content">
-            <div class="footer-links"><a href="#">About Us</a> | <a href="#">Contact Us</a> | <a href="#">Shipping Policy</a> | <a href="#">Return Policy</a></div>
+            <div class="footer-links">
+                <a href="#">About Us</a> |
+                <a href="#">Contact Us</a> |
+                <a href="#">Shipping Policy</a> |
+                <a href="#">Return Policy</a>
+            </div>
             <p class="made-by animated-text">Made by Adnan Shah</p>
             <p>&copy; 2025 ShoppingMarts99. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <div id="product-modal" class="modal-overlay hidden"><div class="modal-content"><span class="close-btn">&times;</span><div id="modal-body"></div></div></div>
-    <div id="customer-form-modal" class="modal-overlay hidden"><div class="form-modal-content"><span class="close-btn">&times;</span><h3>Enter Shipping Details</h3><form id="customer-form"><div class="form-group"><label for="customer-name">Full Name</label><input type="text" id="customer-name" required></div><div class="form-group"><label for="customer-phone">Phone Number</label><input type="tel" id="customer-phone" required></div><div class="form-group"><label for="customer-address">Full Address</label><textarea id="customer-address" rows="3" required></textarea></div><div class="form-group"><label for="customer-pincode">Pincode</label><input type="number" id="customer-pincode" required></div><button type="submit" class="order-now-btn">Place Order</button></form></div></div>
+    <div id="product-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <div id="customer-form-modal" class="modal-overlay hidden">
+        <div class="form-modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Enter Your Shipping Details</h3>
+            <form id="customer-form">
+                <div class="form-group">
+                    <label for="customer-name">Full Name</label>
+                    <input type="text" id="customer-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-phone">Phone Number</label>
+                    <input type="tel" id="customer-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="customer-address">Full Address</label>
+                    <textarea id="customer-address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="customer-pincode">Pincode</label>
+                    <input type="number" id="customer-pincode" required>
+                </div>
+                <button type="submit" class="order-now-btn">Place Order</button>
+            </form>
+        </div>
+    </div>
 
     <button id="back-to-top" class="hidden" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 

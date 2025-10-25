@@ -1,25 +1,29 @@
 const products = [
-  { 
-    id: 1, 
-    name: "Denver Perfume – Pack of 3 (50ml each)", 
-    price: 239, 
-    mrp: 599, 
-    rating: "4.6 ★", 
+  // --- PRODUCT 1: DENVER PERFUME ---
+  {
+    id: 1,
+    name: "Denver Perfume – Pack of 3 (50ml each)",
+    price: 239,
+    mrp: 599,
+    rating: "4.6 ★",
     category: "Perfumes",
-    isNew: true, // Tag for 'NEW'
+    isNew: true,
     description: `Premium Denver Perfume Pack of 3 — perfect for men.
 Long-lasting fragrance, ideal for daily use or gifting 🎁
 
-<strong>✅ Key Features:</strong>
-- 3 Bottles × 50ml each (Total 150ml)
-- perfect for men
+<strong>✅ Key Features:</strong><br>
+- 3 Bottles × 50ml each (Total 150ml)<br>
+- perfect for men<br>
 - Made in India 🇮🇳
-
-<strong>🧾 Product Details:</strong>
-- Brand: Denver
-- Type: Eau De Parfum`, 
-    images: ["Images/perfumes/denver/1.jpg", "Images/perfumes/denver/2.jpg", "Images/perfumes/denver/3.jpg", "Images/perfumes/denver/4.jpg"] 
+<br><br>
+<strong>🧾 Product Details:</strong><br>
+- Brand: Denver<br>
+- Type: Eau De Parfum`,
+    // Simplified structure for products without multiple color variants
+    colors: [ { name: 'Default', images: ["Images/perfumes/denver/1.jpg", "Images/perfumes/denver/2.jpg", "Images/perfumes/denver/3.jpg", "Images/perfumes/denver/4.jpg"] } ],
+    images: ["Images/perfumes/denver/1.jpg"] // Image for home page card
   },
+  // --- PRODUCT 2: LED WATCH ---
   {
     id: 2,
     name: "Trendy LED Digital Watch – Unisex (2 Pc)",
@@ -31,26 +35,88 @@ Long-lasting fragrance, ideal for daily use or gifting 🎁
     description: `Upgrade your style with this modern LED Digital Watch.
 Trendy design with glowing LED display – perfect for daily use or gifting! 🎁
 
-<strong>✅ Key Features:</strong>
-- Bright LED Digital Display
-- Soft & Durable Rubber Strap 
+<strong>✅ Key Features:</strong><br>
+- Bright LED Digital Display<br>
+- Soft & Durable Rubber Strap
 - Made in India 🇮🇳
-
-<strong>📏 Dimensions:</strong>
+<br><br>
+<strong>📏 Dimensions:</strong><br>
 - Width: 4 cm, Height: 2 cm, Length: 20 cm
-
-<strong>📦 Packaging:</strong>
+<br><br>
+<strong>📦 Packaging:</strong><br>
 - Premium box packed (2 Watch)
-
-<strong>🧾 Product Details:</strong>
-- Type: LED Digital Watch
+<br><br>
+<strong>🧾 Product Details:</strong><br>
+- Type: LED Digital Watch<br>
 - Display: Time & Date`,
-    images: ["Images/watches/led watch/1.jpg", "Images/watches/led watch/2.jpg", "Images/watches/led watch/3.jpg"]
+    colors: [ { name: 'Default', images: ["Images/watches/led watch/1.jpg", "Images/watches/led watch/2.jpg", "Images/watches/led watch/3.jpg"] } ],
+    images: ["Images/watches/led watch/1.jpg"] // Image for home page card
+  },
+  // --- PRODUCT 3: VOGUISH ANALOG WATCHES ---
+  {
+    id: 3,
+    name: "Voguish Men Analog Watches (Pack of 2)",
+    price: 199,
+    mrp: 699,
+    rating: "4.5 ★",
+    category: "Watches",
+    isNew: false,
+    description: `Stylish & premium Voguish Analog Watches (Pack of 2) for men.
+Classic stainless steel design with quartz mechanism. ⌚✨
+<br><strong>Note: This pack contains 2 watches. Designs may vary slightly based on availability (Designs shown in images).</strong>
+
+<strong>✅ Key Features:</strong><br>
+- Pack of 2 Elegant Analog Watches<br>
+- Stainless Steel Strap<br>
+- Quartz Mechanism<br>
+- Made in India 🇮🇳
+<br><br>
+<strong>📏 Size:</strong><br>
+- Free Size (Adjustable Strap)
+<br><br>
+<strong>🧾 Product Details:</strong><br>
+- Brand: Voguish<br>
+- Mechanism: Quartz`,
+     colors: [ { name: 'Default', images: ["Images/watches/Voguish Men Waches/1.jpg", "Images/watches/Voguish Men Waches/2.jpg", "Images/watches/Voguish Men Waches/3.jpg"] } ],
+    images: ["Images/watches/Voguish Men Waches/1.jpg"] // Image for home page card
+  },
+  // --- PRODUCT 4: BACKPACK ---
+  {
+    id: 4,
+    name: "Stylish Colorblocked Backpacks (XL Size, 3 Colors)",
+    price: 279,
+    mrp: 799,
+    rating: "4.7 ★",
+    category: "Backpacks",
+    isNew: true,
+    description: `Spacious & trendy Colorblocked Backpacks made from durable polyester fabric — available in Gray, Blue & Red.
+Perfect for school, college, office, or travel. Lightweight, durable, and modern design! 🎒✨
+
+<strong>✅ Key Features:</strong><br>
+- Material: Polyester<br>
+- Size: XL (24–30 Litres)<br>
+- Design: Colorblocked (Modern Pattern 🎨)<br>
+- Made in India 🇮🇳
+<br><br>
+<strong>📏 Dimensions:</strong><br>
+- 41 cm (H) × 28 cm (L) × 11 cm (W)
+<br><br>
+<strong>🧾 Product Details:</strong><br>
+- Brand: MarketSale<br>
+- Type: Casual / Laptop Compatible`,
+    colors: [
+      { name: 'Gray', images: ["Images/Backpacks/Travel-College-Bags/gray-1.jpg", "Images/Backpacks/Travel-College-Bags/gray-2.jpg", "Images/Backpacks/Travel-College-Bags/gray-3.jpg", "Images/Backpacks/Travel-College-Bags/gray-4.jpg"] },
+      { name: 'Blue', images: ["Images/Backpacks/Travel-College-Bags/blue-1.jpg", "Images/Backpacks/Travel-College-Bags/blue-2.jpg", "Images/Backpacks/Travel-College-Bags/blue-3.jpg", "Images/Backpacks/Travel-College-Bags/blue-4.jpg"] },
+      { name: 'Red', images: ["Images/Backpacks/Travel-College-Bags/red-1.jpg", "Images/Backpacks/Travel-College-Bags/red-2.jpg", "Images/Backpacks/Travel-College-Bags/red-3.jpg", "Images/Backpacks/Travel-College-Bags/red-4.jpg"] }
+    ],
+    images: ["Images/Backpacks/Travel-College-Bags/gray-1.jpg"] // Default image for card
   }
 ];
 
-const categories = ["All", "Perfumes", "Watches"];
+// --- CATEGORIES (Updated) ---
+const categories = ["All", "Perfumes", "Watches", "Backpacks"];
 
+// ----- GET HTML ELEMENTS -----
 const productContainer = document.getElementById('product-container');
 const categoryBar = document.getElementById('category-bar');
 const searchInput = document.getElementById('search-input');
@@ -64,24 +130,24 @@ const backToTopButton = document.getElementById('back-to-top');
 
 let currentImageIndex = 0;
 let activeProduct = null;
+let selectedColorIndex = 0;
+let likedProductIds = new Set(JSON.parse(localStorage.getItem('likedProducts') || '[]'));
 
 // --- LIKE BUTTON LOGIC ---
-let likedProductIds = new Set(JSON.parse(localStorage.getItem('likedProducts') || '[]'));
 function saveLikes() { localStorage.setItem('likedProducts', JSON.stringify(Array.from(likedProductIds))); }
 function handleLikeClick(productId, buttonElement) {
-    productId = parseInt(productId); 
+    productId = parseInt(productId);
     if (likedProductIds.has(productId)) {
         likedProductIds.delete(productId);
         buttonElement.classList.remove('liked');
-        buttonElement.innerHTML = '<i class="far fa-heart"></i>'; 
+        buttonElement.innerHTML = '<i class="far fa-heart"></i>';
     } else {
         likedProductIds.add(productId);
         buttonElement.classList.add('liked');
-        buttonElement.innerHTML = '<i class="fas fa-heart"></i>'; 
+        buttonElement.innerHTML = '<i class="fas fa-heart"></i>';
     }
     saveLikes();
 }
-// --- END LIKE LOGIC ---
 
 // --- Skeleton Loader HTML ---
 const skeletonCardHTML = `
@@ -93,39 +159,42 @@ const skeletonCardHTML = `
 
 // --- Function to render products ---
 function renderProducts(productsToRender) {
-    productContainer.classList.remove('loading'); 
-    productContainer.innerHTML = ''; 
+    productContainer.classList.remove('loading');
+    productContainer.innerHTML = '';
     if (productsToRender.length === 0) {
         productContainer.innerHTML = '<p style="text-align: center; width: 100%; color: #888;">No products found!</p>';
         return;
     }
     productsToRender.forEach((product, index) => {
         const card = document.createElement('div');
-        card.className = 'product-card'; 
-        card.dataset.productId = product.id; 
-        card.style.animationDelay = `${index * 0.05}s`; 
-        
+        card.className = 'product-card';
+        card.dataset.productId = product.id;
+        card.style.animationDelay = `${index * 0.05}s`;
         const isLiked = likedProductIds.has(product.id);
-        
+        const cardImage = (product.colors && product.colors[0].images.length > 0) ? product.colors[0].images[0] : 'placeholder.jpg'; // Use first image of first color
+
         card.innerHTML = `
-            ${product.isNew ? '<span class="product-tag">NEW</span>' : ''} 
+            ${product.isNew ? '<span class="product-tag">NEW</span>' : ''}
             <button class="like-button ${isLiked ? 'liked' : ''}" data-product-id="${product.id}" title="Like">
                 <i class="${isLiked ? 'fas' : 'far'} fa-heart"></i>
             </button>
-            <img src="${product.images[0]}" alt="${product.name}" class="product-image">
+            <img src="${cardImage}" alt="${product.name}" class="product-image">
             <div class="card-body">
                 <h3 class="product-title">${product.name}</h3>
                 <p class="product-price">₹${product.price}</p>
             </div>
         `;
         productContainer.appendChild(card);
-        observer.observe(card); 
+        observer.observe(card);
     });
 }
 
 // --- Function to render category buttons ---
 function renderCategories() {
-    categories.forEach(category => {
+    categoryBar.innerHTML = ''; // Clear existing buttons
+    const uniqueCategories = ['All', ...new Set(products.map(p => p.category))]; // Dynamically get categories + 'All'
+
+    uniqueCategories.forEach(category => {
         const button = document.createElement('button');
         button.className = 'category-btn';
         button.textContent = category;
@@ -137,7 +206,7 @@ function renderCategories() {
 
 // --- Sorting Logic ---
 function sortProducts(productsToSort, sortBy) {
-    const sorted = [...productsToSort]; 
+    const sorted = [...productsToSort];
     switch (sortBy) {
         case 'price-low-high': sorted.sort((a, b) => a.price - b.price); break;
         case 'price-high-low': sorted.sort((a, b) => b.price - a.price); break;
@@ -149,6 +218,7 @@ function sortProducts(productsToSort, sortBy) {
 // --- Main filtering and sorting logic ---
 function filterSortAndRender() {
     const activeCategoryBtn = categoryBar.querySelector('.active');
+    if (!activeCategoryBtn) { console.warn("No active category button found."); renderProducts(products); return; }
     const currentCategory = activeCategoryBtn.dataset.category;
     const searchTerm = searchInput.value.toLowerCase();
     const sortBy = sortSelect.value;
@@ -166,96 +236,117 @@ function filterSortAndRender() {
 // --- Event Listeners for Filtering & Sorting ---
 categoryBar.addEventListener('click', (event) => {
     if (event.target.tagName === 'BUTTON') {
-        categoryBar.querySelector('.active').classList.remove('active');
+        const currentActive = categoryBar.querySelector('.active');
+        if (currentActive) currentActive.classList.remove('active');
         event.target.classList.add('active');
         pageTitle.textContent = (event.target.dataset.category === "All") ? "All Products" : event.target.dataset.category;
         filterSortAndRender();
     }
 });
 searchInput.addEventListener('input', filterSortAndRender);
-sortSelect.addEventListener('change', filterSortAndRender); 
+sortSelect.addEventListener('change', filterSortAndRender);
 
 // --- Intersection Observer for Scroll Animations ---
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); }
     });
-}, { threshold: 0.1 }); 
+}, { threshold: 0.1 });
 
 // --- Back to Top Button Logic ---
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) { 
-        backToTopButton.classList.remove('hidden');
-    } else {
-        backToTopButton.classList.add('hidden');
-    }
+    if (window.scrollY > 300) { backToTopButton.classList.remove('hidden'); }
+    else { backToTopButton.classList.add('hidden'); }
 });
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo(0, 0); 
-});
+backToTopButton.addEventListener('click', () => { window.scrollTo(0, 0); });
 
 // --- Modal Functions ---
 function updateSlider() {
     if (!activeProduct) return;
     const mainImage = modalBody.querySelector('#main-product-image');
-    const thumbnails = modalBody.querySelectorAll('.thumbnail');
-    mainImage.src = activeProduct.images[currentImageIndex];
-    thumbnails.forEach((thumb, index) => {
-        thumb.classList.toggle('active', index === currentImageIndex);
+    const colorSwatches = modalBody.querySelectorAll('.color-swatch');
+    const thumbnailContainer = modalBody.querySelector('.thumbnail-container');
+
+    const currentImages = activeProduct.colors[selectedColorIndex].images;
+
+    // Update main image
+    if (mainImage && currentImages.length > currentImageIndex) {
+        mainImage.src = currentImages[currentImageIndex];
+    } else if (mainImage && currentImages.length > 0) {
+         mainImage.src = currentImages[0]; currentImageIndex = 0;
+    } else { console.error("Slider elements error for product ID:", activeProduct.id); }
+
+    // Update thumbnails
+    thumbnailContainer.innerHTML = currentImages.map((imgSrc, index) =>
+        `<img src="${imgSrc}" class="thumbnail ${index === currentImageIndex ? 'active' : ''}" data-index="${index}">`
+    ).join('');
+
+    // Update active color swatch
+    colorSwatches.forEach((swatch, index) => {
+        swatch.classList.toggle('active', index === selectedColorIndex);
     });
 }
 
 function showProductModal(product) {
   activeProduct = product;
   currentImageIndex = 0;
-  const thumbnailsHtml = activeProduct.images.map((imgSrc, index) => `<img src="${imgSrc}" class="thumbnail" data-index="${index}">`).join('');
-  const discount = Math.round(((product.mrp - product.price) / product.mrp) * 100);
+  selectedColorIndex = 0; // Default to first color
+
+  let colorSelectorHtml = '';
+  if (product.colors && product.colors.length > 1) {
+      colorSelectorHtml = `
+          <div class="color-selector">
+              <label>Color:</label>
+              ${product.colors.map((color, index) => {
+                  let colorValue = color.name.toLowerCase();
+                  if (colorValue === 'gray') colorValue = '#808080';
+                  else if (colorValue === 'blue') colorValue = '#4682B4'; // Steel blue
+                  else if (colorValue === 'red') colorValue = '#B22222'; // Firebrick red
+                  return `<span class="color-swatch ${index === 0 ? 'active' : ''}" data-color-index="${index}" style="background-color: ${colorValue};" title="${color.name}"></span>`;
+              }).join('')}
+          </div>`;
+  }
+
+  const initialImages = product.colors[selectedColorIndex].images;
+  const thumbnailsHtml = initialImages.map((imgSrc, index) => `<img src="${imgSrc}" class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">`).join('');
+  const discount = (product.mrp && product.mrp > product.price) ? Math.round(((product.mrp - product.price) / product.mrp) * 100) : 0;
+
   modalBody.innerHTML = `
     <div class="image-gallery">
-        <div class="main-image-container"><img src="${activeProduct.images[0]}" id="main-product-image" alt="${activeProduct.name}"></div>
+        <div class="main-image-container"><img src="${initialImages[0]}" id="main-product-image" alt="${product.name}"></div>
         <div class="thumbnail-container">${thumbnailsHtml}</div>
     </div>
     <div class="product-info">
-        <h3 class="product-title">${activeProduct.name}</h3>
+        <h3 class="product-title">${product.name}</h3>
+         ${colorSelectorHtml}
         <div class="price-container">
-            <span class="final-price">₹${activeProduct.price}</span>
-            <span class="mrp">₹${activeProduct.mrp}</span>
-            <span class="discount">${discount}% OFF</span>
+            <span class="final-price">₹${product.price}</span>
+            ${product.mrp && product.mrp > product.price ? `<span class="mrp">₹${product.mrp}</span>` : ''}
+            ${discount > 0 ? `<span class="discount">${discount}% OFF</span>` : ''}
         </div>
-        <p class="rating">${activeProduct.rating}</p>
-        <div class="description">${activeProduct.description}</div>
+        <p class="rating">${product.rating || ''}</p>
+        <div class="description">${product.description || ''}</div>
         <button class="buy-btn">🛒 Buy Now</button>
-    </div>
-  `;
+    </div>`;
   productModal.classList.remove('hidden');
   updateSlider();
   history.pushState({ productId: product.id }, '', `#product-${product.id}`);
 }
 
-function hideProductModal() { 
-    productModal.classList.add('hidden'); 
-    activeProduct = null;
-    if(window.location.hash.startsWith('#product-')) {
-       history.back(); 
-    }
+function hideProductModal() {
+    productModal.classList.add('hidden'); activeProduct = null;
+    if(window.location.hash.startsWith('#product-')) { history.go(-1); }
 }
-
 function showCustomerFormModal() { customerFormModal.classList.remove('hidden'); }
 function hideCustomerFormModal() { customerFormModal.classList.add('hidden'); }
 
 // --- Event Listeners for Modals ---
 productContainer.addEventListener('click', (event) => {
-  // Check if like button was clicked
   if (event.target.closest('.like-button')) {
       const button = event.target.closest('.like-button');
       handleLikeClick(button.dataset.productId, button);
-      event.stopPropagation(); // Prevent modal from opening
-      return; 
+      event.stopPropagation(); return;
   }
-  
-  // Otherwise, open modal
   const card = event.target.closest('.product-card');
   if (card) {
     const productId = parseInt(card.dataset.productId);
@@ -266,8 +357,13 @@ productContainer.addEventListener('click', (event) => {
 
 productModal.addEventListener('click', (event) => {
   if (!activeProduct) return;
-  if (event.target.classList.contains('buy-btn')) { /* Keep history */ showCustomerFormModal(); return; } 
+  if (event.target.classList.contains('buy-btn')) { showCustomerFormModal(); return; }
   if (event.target.classList.contains('thumbnail')) { currentImageIndex = parseInt(event.target.dataset.index); updateSlider(); }
+  if (event.target.classList.contains('color-swatch')) {
+      selectedColorIndex = parseInt(event.target.dataset.colorIndex);
+      currentImageIndex = 0; // Reset image index
+      updateSlider();
+  }
   if (event.target.classList.contains('close-btn') || event.target === productModal) { hideProductModal(); }
 });
 
@@ -278,38 +374,43 @@ customerForm.addEventListener('submit', (event) => {
     const address = document.getElementById('customer-address').value;
     const pincode = document.getElementById('customer-pincode').value;
     const your_whatsapp_number = "919503780721";
-    const message = `*New Order from ShoppingMarts99*\n\n*PRODUCT DETAILS:*\n- Name: ${activeProduct.name}\n- Price: ₹${activeProduct.price}\n\n*CUSTOMER DETAILS:*\n- Full Name: ${name}\n- Phone No: ${phone}\n- Address: ${address}\n- Pincode: ${pincode}`;
+
+    let selectedColorName = ''; // Get selected color name
+     if (activeProduct.colors && activeProduct.colors.length > 0) { // Check if colors exist
+       selectedColorName = activeProduct.colors[selectedColorIndex].name;
+     }
+
+    const message = `*New Order from ShoppingMarts99*\n\n*PRODUCT DETAILS:*\n- Name: ${activeProduct.name}\n- Price: ₹${activeProduct.price}${selectedColorName ? `\n- Color: ${selectedColorName}` : ''}\n\n*CUSTOMER DETAILS:*\n- Full Name: ${name}\n- Phone No: ${phone}\n- Address: ${address}\n- Pincode: ${pincode}`;
+
     window.open(`https://wa.me/${your_whatsapp_number}?text=${encodeURIComponent(message.trim())}`, '_blank');
     customerForm.reset();
     hideCustomerFormModal();
-    hideProductModal(); // Hide product modal after order
 });
 
 customerFormModal.addEventListener('click', (event) => {
   if (event.target.classList.contains('close-btn') || event.target === customerFormModal) { hideCustomerFormModal(); }
 });
 
-window.addEventListener('popstate', () => {
+window.addEventListener('popstate', (event) => {
     if (!window.location.hash.startsWith('#product-')) {
-        productModal.classList.add('hidden'); 
-        activeProduct = null;
+        productModal.classList.add('hidden'); activeProduct = null;
+    } else {
+        const productId = parseInt(window.location.hash.substring(9));
+        const product = products.find(p => p.id === productId);
+        if (product && productModal.classList.contains('hidden')) { showProductModal(product); }
     }
 });
 
 // --- Initial Setup ---
 document.addEventListener('DOMContentLoaded', () => {
     renderCategories();
-    productContainer.innerHTML = skeletonCardHTML.repeat(6); 
-    setTimeout(() => {
-        filterSortAndRender(); 
-    }, 500); 
-
+    productContainer.innerHTML = skeletonCardHTML.repeat(products.length < 6 ? products.length * 2 : 6);
+    setTimeout(() => { filterSortAndRender(); }, 500);
     if(window.location.hash.startsWith('#product-')) {
         const productId = parseInt(window.location.hash.substring(9));
         const product = products.find(p => p.id === productId);
-        if (product) {
-            showProductModal(product); 
-        }
+        if (product) { setTimeout(() => showProductModal(product), 100); }
+        else { history.replaceState(null, '', window.location.pathname + window.location.search); }
     }
 });
 

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shoppingmarts99-v8'; // Version updated for backpack images
+const CACHE_NAME = 'shoppingmarts99-v10'; // Version updated for latest image paths
 const urlsToCache = [
   '/',
   '/index.html',
@@ -9,7 +9,7 @@ const urlsToCache = [
   // LED Watch Images
   '/Images/watches/led watch/1.jpg', '/Images/watches/led watch/2.jpg', '/Images/watches/led watch/3.jpg',
   // Voguish Watch Images
-  '/Images/watches/Voguish Men Waches/1.jpg', '/Images/watches/Voguish Men Waches/2.jpg', '/Images/watches/Voguish Men Waches/3.jpg',
+  '/Images/watches/Voguish Men Waches/1.jpg', '/Images/watches/Voguish Men Waches/2.jpg',
   // Backpack Images (All Colors)
   '/Images/Backpacks/Travel-College-Bags/gray-1.jpg', '/Images/Backpacks/Travel-College-Bags/gray-2.jpg', '/Images/Backpacks/Travel-College-Bags/gray-3.jpg', '/Images/Backpacks/Travel-College-Bags/gray-4.jpg',
   '/Images/Backpacks/Travel-College-Bags/blue-1.jpg', '/Images/Backpacks/Travel-College-Bags/blue-2.jpg', '/Images/Backpacks/Travel-College-Bags/blue-3.jpg', '/Images/Backpacks/Travel-College-Bags/blue-4.jpg',

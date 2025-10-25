@@ -1,13 +1,14 @@
-/* --- STYLISH THEME WITH LIKE BUTTON --- */
+/* --- DARKER STYLISH THEME WITH ALL FEATURES --- */
 
 :root {
-  --primary-gradient: linear-gradient(135deg, #5a67d8 0%, #5a3f89 100%); /* Darker Gradient */
+  --primary-gradient: linear-gradient(135deg, #5a67d8 0%, #5a3f89 100%);
   --text-dark: #1A202C;
   --text-light: #4A5568;
-  --background-light: #f0f4f8; /* Slightly darker background */
+  --background-light: #f0f4f8;
   --card-background: #ffffff;
-  --border-light: #e2e8f0;
-  --like-color: #e53935; /* Red for liked heart */
+  --border-light: #d8dee9;
+  --like-color: #e53935;
+  --active-color-highlight: #5a3f89;
 }
 
 html { scroll-behavior: smooth; }
@@ -87,41 +88,32 @@ main h2 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 
 .hidden { display: none; }
 .thumbnail-container { display: flex; gap: 10px; justify-content: flex-start; margin-bottom: 25px; overflow-x: auto; padding-bottom: 10px; }
 .thumbnail { width: 70px; height: 70px; object-fit: contain; border: 2px solid var(--border-light); border-radius: 8px; cursor: pointer; flex-shrink: 0; transition: border-color 0.2s ease; }
-.thumbnail.active { border-color: var(--active-color-highlight); } /* Use variable */
+.thumbnail.active { border-color: var(--active-color-highlight); }
 
-/* ✅ --- UPDATED COLOR SELECTION STYLES --- ✅ */
+/* --- COLOR SELECTION STYLES --- */
 .color-selector { margin-bottom: 20px; }
 .color-selector label { font-weight: 600; margin-right: 10px; font-size: 1rem; color: var(--text-light); }
-.color-swatch {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 10px;
-    cursor: pointer;
-    border: 3px solid var(--card-background);
-    /* Darker outer border */
-    box-shadow: 0 0 0 1px #a0aec0; 
-    transition: box-shadow 0.2s ease;
-}
-.color-swatch.active {
-    /* Use the variable for active color */
-    box-shadow: 0 0 0 3px var(--active-color-highlight); 
-}
-/* --- END COLOR SELECTION STYLES --- */
+.color-swatch { display: inline-block; width: 30px; height: 30px; border-radius: 50%; margin-right: 10px; cursor: pointer; border: 3px solid var(--card-background); box-shadow: 0 0 0 1px #a0aec0; transition: box-shadow 0.2s ease; }
+.color-swatch.active { box-shadow: 0 0 0 3px var(--active-color-highlight); }
 
 .product-info .price-container { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
 .product-info .final-price { font-size: 1.8rem; font-weight: 700; }
 .product-info .mrp { font-size: 1rem; color: var(--text-light); text-decoration: line-through; }
-.product-info .discount { font-size: 1rem; color: #28a745; font-weight: 600; }
-.product-info .description { font-size: 1rem; color: #444; margin-bottom: 30px; line-height: 1.6; white-space: pre-wrap; }
+.product-info .discount { font-size: 1rem; color: #2f855a; font-weight: 600; }
+.product-info .rating { margin-bottom: 20px; font-weight: 500; color: #555; }
+.product-info .description { font-size: 1rem; color: var(--text-light); margin-bottom: 30px; line-height: 1.6; white-space: pre-wrap; }
 .buy-btn, .order-now-btn { background: var(--primary-gradient); color: white; border: none; padding: 15px; border-radius: 8px; font-size: 1.1rem; font-weight: 600; cursor: pointer; width: 100%; text-align: center; }
+.buy-btn:hover, .order-now-btn:hover { background: linear-gradient(135deg, #5a67d8 0%, #4c3375 100%); }
 
 /* --- CUSTOMER FORM --- */
-.form-modal-content { background-color: var(--card-background); padding: 30px; border-radius: 12px; max-width: 450px; width: 90%; position: relative; }
-#customer-form label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
-#customer-form input, #customer-form textarea { width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 8px; box-sizing: border-box; font-size: 1rem; font-family: 'Poppins', sans-serif; }
-#customer-form input:focus, #customer-form textarea:focus { border-color: #667eea; box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2); outline: none; }
+.form-modal-content { background-color: var(--card-background); padding: 35px; border-radius: 15px; max-width: 480px; width: 90%; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.form-modal-content h3 { text-align: center; margin-top: 0; margin-bottom: 30px; font-weight: 600; color: var(--text-dark); }
+#customer-form .form-group { margin-bottom: 25px; }
+#customer-form label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; color: var(--text-light); }
+#customer-form input, #customer-form textarea { width: 100%; padding: 14px; border: 1px solid var(--border-light); border-radius: 8px; box-sizing: border-box; font-size: 1rem; font-family: 'Poppins', sans-serif; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+#customer-form input:focus, #customer-form textarea:focus { border-color: var(--active-color-highlight); box-shadow: 0 0 0 3px rgba(90, 51, 137, 0.2); outline: none; }
+.order-now-btn { margin-top: 10px; }
+.order-now-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(90, 51, 137, 0.4); }
 
 /* --- FOOTER --- */
 .main-footer { background-color: #1a202c; color: #a0aec0; text-align: center; padding: 25px; }
@@ -138,24 +130,36 @@ main h2 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    /* ... (Most responsive styles remain the same) ... */
+    .container { padding: 0 10px; }
     .main-header .container { flex-wrap: wrap; }
-    .logo { width: 100%; text-align: center; margin-bottom: 10px; }
-    .search-bar { order: 2; width: calc(100% - 100px); margin: 0; }
-    .user-actions { order: 3; }
-    .controls-nav { top: 0; }
-    .category-nav .container { justify-content: flex-start; overflow-x: auto; padding-bottom: 10px; }
-    .category-btn { flex-shrink: 0; }
+    .logo { width: 100%; text-align: center; margin-bottom: 10px; font-size: 1.8rem; }
+    .search-bar { order: 2; width: calc(100% - 80px); margin: 0; padding: 6px 15px;}
+    .user-actions { order: 3; gap: 15px; }
+    .action-item i { font-size: 1.2rem; }
+    .controls-nav { top: 0; padding: 10px 0;}
+    .category-nav .container { padding: 0 10px; justify-content: flex-start; overflow-x: auto; }
+    .category-btn { padding: 6px 14px; font-size: 0.8rem; flex-shrink: 0; }
+    .sort-options { margin-top: 10px; width: 100%; text-align: center; }
     main { padding: 20px 0; }
-    main h2 { font-size: 1.5rem; }
-    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-    .product-card .product-title { font-size: 0.9rem; padding: 10px; }
-    .product-card .product-price { font-size: 1.1rem; }
-    .product-card .product-image { height: 180px; }
-    .like-button { font-size: 1.2rem; top: 10px; right: 10px; }
-    .modal-content { padding: 20px; width: 95%; max-height: 85vh; }
-    .close-btn { top: 10px; right: 15px; font-size: 30px; }
-    .buy-btn, .order-now-btn { padding: 12px; }
-    #back-to-top { width: 40px; height: 40px; font-size: 1.2rem; bottom: 20px; right: 20px; }
+    main h2 { font-size: 1.4rem; margin-bottom: 25px; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .product-card .product-image { height: 160px; }
+    .product-card .card-body { padding: 10px 12px; }
+    .product-card .product-title { font-size: 0.85rem; padding-right: 25px; margin-bottom: 5px; }
+    .product-card .product-price { font-size: 1rem; }
+    .like-button { font-size: 1.1rem; top: 8px; right: 8px; }
+    .modal-content { padding: 15px; width: 95%; max-height: 90vh; }
+    .close-btn { top: 8px; right: 12px; font-size: 28px; }
+    .buy-btn, .order-now-btn { padding: 12px; font-size: 1rem; }
+    #back-to-top { width: 40px; height: 40px; font-size: 1.2rem; bottom: 15px; right: 15px; }
     .color-swatch { width: 25px; height: 25px; }
+    .form-modal-content { padding: 25px; }
+}
+
+@media (max-width: 480px) {
+    .product-grid { gap: 8px; }
+    .product-card .product-image { height: 140px; }
+    .product-card .card-body { padding: 8px 10px; }
+    .product-card .product-title { font-size: 0.8rem; }
+    .product-card .product-price { font-size: 0.95rem; }
 }

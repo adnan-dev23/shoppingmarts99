@@ -19,9 +19,8 @@ Long-lasting fragrance, ideal for daily use or gifting 🎁
 <strong>🧾 Product Details:</strong><br>
 - Brand: Denver<br>
 - Type: Eau De Parfum`,
-    // Simplified structure for products without multiple color variants
     colors: [ { name: 'Default', images: ["Images/perfumes/denver/1.jpg", "Images/perfumes/denver/2.jpg", "Images/perfumes/denver/3.jpg", "Images/perfumes/denver/4.jpg"] } ],
-    images: ["Images/perfumes/denver/1.jpg"] // Image for home page card
+    images: ["Images/perfumes/denver/1.jpg"]
   },
   // --- PRODUCT 2: LED WATCH ---
   {
@@ -50,7 +49,7 @@ Trendy design with glowing LED display – perfect for daily use or gifting! �
 - Type: LED Digital Watch<br>
 - Display: Time & Date`,
     colors: [ { name: 'Default', images: ["Images/watches/led watch/1.jpg", "Images/watches/led watch/2.jpg", "Images/watches/led watch/3.jpg"] } ],
-    images: ["Images/watches/led watch/1.jpg"] // Image for home page card
+    images: ["Images/watches/led watch/1.jpg"]
   },
   // --- PRODUCT 3: VOGUISH ANALOG WATCHES ---
   {
@@ -63,7 +62,6 @@ Trendy design with glowing LED display – perfect for daily use or gifting! �
     isNew: false,
     description: `Stylish & premium Voguish Analog Watches (Pack of 2) for men.
 Classic stainless steel design with quartz mechanism. ⌚✨
-<br><strong>Note: This pack contains 2 watches. Designs may vary slightly based on availability (Designs shown in images).</strong>
 
 <strong>✅ Key Features:</strong><br>
 - Pack of 2 Elegant Analog Watches<br>
@@ -77,8 +75,8 @@ Classic stainless steel design with quartz mechanism. ⌚✨
 <strong>🧾 Product Details:</strong><br>
 - Brand: Voguish<br>
 - Mechanism: Quartz`,
-     colors: [ { name: 'Default', images: ["Images/watches/Voguish Men Waches/1.jpg", "Images/watches/Voguish Men Waches/2.jpg", "Images/watches/Voguish Men Waches/3.jpg"] } ],
-    images: ["Images/watches/Voguish Men Waches/1.jpg"] // Image for home page card
+     colors: [ { name: 'Default', images: ["Images/watches/Voguish Men Waches/1.jpg", "Images/watches/Voguish Men Waches/2.jpg"] } ],
+    images: ["Images/watches/Voguish Men Waches/1.jpg"]
   },
   // --- PRODUCT 4: BACKPACK ---
   {
@@ -113,7 +111,7 @@ Perfect for school, college, office, or travel. Lightweight, durable, and modern
   }
 ];
 
-// --- CATEGORIES (Updated) ---
+// --- CATEGORIES ---
 const categories = ["All", "Perfumes", "Watches", "Backpacks"];
 
 // ----- GET HTML ELEMENTS -----
@@ -171,7 +169,9 @@ function renderProducts(productsToRender) {
         card.dataset.productId = product.id;
         card.style.animationDelay = `${index * 0.05}s`;
         const isLiked = likedProductIds.has(product.id);
-        const cardImage = (product.colors && product.colors[0].images.length > 0) ? product.colors[0].images[0] : 'placeholder.jpg'; // Use first image of first color
+        const cardImage = (product.colors && product.colors.length > 0 && product.colors[0].images.length > 0)
+                          ? product.colors[0].images[0]
+                          : 'placeholder.jpg'; // Fallback image
 
         card.innerHTML = `
             ${product.isNew ? '<span class="product-tag">NEW</span>' : ''}
@@ -267,53 +267,60 @@ function updateSlider() {
     const colorSwatches = modalBody.querySelectorAll('.color-swatch');
     const thumbnailContainer = modalBody.querySelector('.thumbnail-container');
 
+    if (!activeProduct.colors || activeProduct.colors.length === 0 || !activeProduct.colors[selectedColorIndex]) {
+        console.error("Color data missing for product:", activeProduct.id);
+        return;
+    }
+
     const currentImages = activeProduct.colors[selectedColorIndex].images;
 
-    // Update main image
-    if (mainImage && currentImages.length > currentImageIndex) {
+    if (mainImage && currentImages && currentImages.length > currentImageIndex) {
         mainImage.src = currentImages[currentImageIndex];
-    } else if (mainImage && currentImages.length > 0) {
+    } else if (mainImage && currentImages && currentImages.length > 0) {
          mainImage.src = currentImages[0]; currentImageIndex = 0;
-    } else { console.error("Slider elements error for product ID:", activeProduct.id); }
+    } else { console.error("Slider elements error for product:", activeProduct.id); }
 
-    // Update thumbnails
-    thumbnailContainer.innerHTML = currentImages.map((imgSrc, index) =>
-        `<img src="${imgSrc}" class="thumbnail ${index === currentImageIndex ? 'active' : ''}" data-index="${index}">`
-    ).join('');
+    if (thumbnailContainer && currentImages) {
+        thumbnailContainer.innerHTML = currentImages.map((imgSrc, index) =>
+            `<img src="${imgSrc}" class="thumbnail ${index === currentImageIndex ? 'active' : ''}" data-index="${index}">`
+        ).join('');
+    }
 
-    // Update active color swatch
-    colorSwatches.forEach((swatch, index) => {
-        swatch.classList.toggle('active', index === selectedColorIndex);
-    });
+    if (colorSwatches.length > 0) {
+      colorSwatches.forEach((swatch, index) => {
+          swatch.classList.toggle('active', index === selectedColorIndex);
+      });
+    }
 }
+
 
 function showProductModal(product) {
   activeProduct = product;
   currentImageIndex = 0;
-  selectedColorIndex = 0; // Default to first color
+  selectedColorIndex = 0;
 
   let colorSelectorHtml = '';
-  if (product.colors && product.colors.length > 1) {
+  if (product.colors && (product.colors.length > 1 || (product.colors.length === 1 && product.colors[0].name !== 'Default'))) {
       colorSelectorHtml = `
           <div class="color-selector">
               <label>Color:</label>
               ${product.colors.map((color, index) => {
                   let colorValue = color.name.toLowerCase();
                   if (colorValue === 'gray') colorValue = '#808080';
-                  else if (colorValue === 'blue') colorValue = '#4682B4'; // Steel blue
-                  else if (colorValue === 'red') colorValue = '#B22222'; // Firebrick red
+                  else if (colorValue === 'blue') colorValue = '#4682B4';
+                  else if (colorValue === 'red') colorValue = '#B22222';
                   return `<span class="color-swatch ${index === 0 ? 'active' : ''}" data-color-index="${index}" style="background-color: ${colorValue};" title="${color.name}"></span>`;
               }).join('')}
           </div>`;
   }
 
-  const initialImages = product.colors[selectedColorIndex].images;
+  const initialImages = (product.colors && product.colors.length > 0 && product.colors[selectedColorIndex].images) ? product.colors[selectedColorIndex].images : [];
   const thumbnailsHtml = initialImages.map((imgSrc, index) => `<img src="${imgSrc}" class="thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">`).join('');
   const discount = (product.mrp && product.mrp > product.price) ? Math.round(((product.mrp - product.price) / product.mrp) * 100) : 0;
 
   modalBody.innerHTML = `
     <div class="image-gallery">
-        <div class="main-image-container"><img src="${initialImages[0]}" id="main-product-image" alt="${product.name}"></div>
+        <div class="main-image-container"><img src="${initialImages[0] || 'placeholder.jpg'}" id="main-product-image" alt="${product.name}"></div>
         <div class="thumbnail-container">${thumbnailsHtml}</div>
     </div>
     <div class="product-info">
@@ -375,12 +382,15 @@ customerForm.addEventListener('submit', (event) => {
     const pincode = document.getElementById('customer-pincode').value;
     const your_whatsapp_number = "919503780721";
 
-    let selectedColorName = ''; // Get selected color name
-     if (activeProduct.colors && activeProduct.colors.length > 0) { // Check if colors exist
+    let selectedColorName = '';
+     if (activeProduct && activeProduct.colors && activeProduct.colors.length > 0) {
        selectedColorName = activeProduct.colors[selectedColorIndex].name;
+       if(activeProduct.colors.length === 1 && selectedColorName === 'Default') {
+           selectedColorName = '';
+       }
      }
 
-    const message = `*New Order from ShoppingMarts99*\n\n*PRODUCT DETAILS:*\n- Name: ${activeProduct.name}\n- Price: ₹${activeProduct.price}${selectedColorName ? `\n- Color: ${selectedColorName}` : ''}\n\n*CUSTOMER DETAILS:*\n- Full Name: ${name}\n- Phone No: ${phone}\n- Address: ${address}\n- Pincode: ${pincode}`;
+    const message = `*New Order from ShoppingMarts99*\n\n*PRODUCT DETAILS:*\n- Name: ${activeProduct ? activeProduct.name : 'N/A'}\n- Price: ₹${activeProduct ? activeProduct.price : 'N/A'}${selectedColorName ? `\n- Color: ${selectedColorName}` : ''}\n\n*CUSTOMER DETAILS:*\n- Full Name: ${name}\n- Phone No: ${phone}\n- Address: ${address}\n- Pincode: ${pincode}`;
 
     window.open(`https://wa.me/${your_whatsapp_number}?text=${encodeURIComponent(message.trim())}`, '_blank');
     customerForm.reset();

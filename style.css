@@ -1,4 +1,4 @@
-/* --- DARKER STYLISH THEME WITH ALL FEATURES --- */
+/* --- STYLISH THEME WITH ALL FEATURES --- */
 
 :root {
   --primary-gradient: linear-gradient(135deg, #5a67d8 0%, #5a3f89 100%);
@@ -128,26 +128,50 @@ main h2 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 
 #back-to-top:not(.hidden) { opacity: 1; transform: translateY(0); }
 #back-to-top:hover { opacity: 0.9; }
 
-/* Responsive adjustments */
+/* --- RESPONSIVE STYLES --- */
 @media (max-width: 768px) {
     .container { padding: 0 10px; }
     .main-header .container { flex-wrap: wrap; }
     .logo { width: 100%; text-align: center; margin-bottom: 10px; font-size: 1.8rem; }
-    .search-bar { order: 2; width: calc(100% - 80px); margin: 0; padding: 6px 15px;}
+    .search-bar { order: 2; width: calc(100% - 80px); /* Slightly more space */ margin: 0; padding: 6px 15px;}
     .user-actions { order: 3; gap: 15px; }
     .action-item i { font-size: 1.2rem; }
+
     .controls-nav { top: 0; padding: 10px 0;}
     .category-nav .container { padding: 0 10px; justify-content: flex-start; overflow-x: auto; }
     .category-btn { padding: 6px 14px; font-size: 0.8rem; flex-shrink: 0; }
     .sort-options { margin-top: 10px; width: 100%; text-align: center; }
+
     main { padding: 20px 0; }
     main h2 { font-size: 1.4rem; margin-bottom: 25px; }
-    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .product-card .product-image { height: 160px; }
-    .product-card .card-body { padding: 10px 12px; }
-    .product-card .product-title { font-size: 0.85rem; padding-right: 25px; margin-bottom: 5px; }
-    .product-card .product-price { font-size: 1rem; }
-    .like-button { font-size: 1.1rem; top: 8px; right: 8px; }
+
+    /* ✅ --- SMALLER 2x2 GRID & CARDS FOR MOBILE --- ✅ */
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px; /* Further reduced gap */
+    }
+    .product-card .product-image {
+        height: 150px; /* Reduced image height further */
+    }
+    .product-card .card-body {
+        padding: 8px 10px; /* Reduced padding */
+    }
+    .product-card .product-title {
+        font-size: 0.8rem; /* Smaller title */
+        padding-right: 25px;
+        margin-bottom: 4px; /* Reduced margin */
+    }
+    .product-card .product-price {
+        font-size: 0.95rem; /* Smaller price */
+    }
+    .like-button {
+        font-size: 1rem; /* Smaller heart */
+        top: 6px;
+        right: 6px;
+        padding: 3px;
+    }
+    /* --- END MOBILE CARD ADJUSTMENTS --- */
+
     .modal-content { padding: 15px; width: 95%; max-height: 90vh; }
     .close-btn { top: 8px; right: 12px; font-size: 28px; }
     .buy-btn, .order-now-btn { padding: 12px; font-size: 1rem; }
@@ -156,10 +180,9 @@ main h2 { font-size: 2rem; font-weight: 600; text-align: center; margin-bottom: 
     .form-modal-content { padding: 25px; }
 }
 
-@media (max-width: 480px) {
-    .product-grid { gap: 8px; }
-    .product-card .product-image { height: 140px; }
-    .product-card .card-body { padding: 8px 10px; }
-    .product-card .product-title { font-size: 0.8rem; }
-    .product-card .product-price { font-size: 0.95rem; }
+/* Optional: Even smaller adjustments for very small screens */
+@media (max-width: 400px) {
+    .product-card .product-image { height: 130px; }
+    .product-card .product-title { font-size: 0.75rem; }
+    .product-card .product-price { font-size: 0.9rem; }
 }
